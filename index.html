@@ -1,199 +1,337 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b16">
-  <meta name="description" content="Watch videos on Paras's Website.">
-  <title>Paras's Website — Video Hub</title>
-  <style>
-    :root{color-scheme:dark;--bg:#090b16;--panel:#111629;--panel2:#171e35;--line:#28314d;--text:#f4f6ff;--muted:#aab3cc;--purple:#8b5cf6;--cyan:#22d3ee}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% -10%,#292052 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
-    header{position:sticky;top:0;z-index:5;background:#090b16eF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
-    .nav{max-width:1120px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-    .brand{font-weight:850;font-size:19px;letter-spacing:-.5px}.brand span{color:var(--cyan)}
-    button,.btn{border:0;border-radius:11px;padding:10px 15px;background:linear-gradient(110deg,var(--purple),#5968ed);color:white;font-weight:750;cursor:pointer}
-    button:disabled{opacity:.5;cursor:not-allowed}.ghost{background:var(--panel2);border:1px solid var(--line)}
-    main{max-width:1120px;margin:auto;padding:34px 22px 70px}
-    .hero{padding:34px;border:1px solid #3b326c;border-radius:23px;background:linear-gradient(120deg,#201a43,#111a31 65%,#102b3c);margin-bottom:30px}
-    .eyebrow{color:#9ceafa;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-    h1{font-size:clamp(32px,6vw,54px);line-height:1.05;letter-spacing:-2px;margin:9px 0 12px}.hero p{color:#c6cce0;max-width:610px;margin:0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:28px 0 16px}.section-head h2{margin:0;font-size:23px}.muted{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}
-    .video-card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden}
-    .video-card video{width:100%;aspect-ratio:16/9;background:#05060b;display:block;object-fit:contain}
-    .video-info{padding:14px}.video-info h3{margin:0 0 5px;font-size:17px;overflow-wrap:anywhere}.video-info p{margin:0;color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
-    .empty{grid-column:1/-1;text-align:center;padding:42px 18px;border:1px dashed #39415e;border-radius:17px;color:var(--muted)}
-    .panel{padding:20px;margin-top:25px}.panel h2{margin:0 0 5px}.panel>p{margin:0 0 16px;color:var(--muted)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}label{display:block;font-size:13px;font-weight:700;color:#dce2f5;margin-bottom:6px}
-    input,textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #39415e;background:#090e1d;color:var(--text);font:inherit;outline:none}
-    input:focus,textarea:focus{border-color:var(--cyan)}textarea{min-height:95px;resize:vertical}.field{margin-bottom:13px}.full{grid-column:1/-1}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.status{font-size:13px;color:var(--muted);min-height:20px;margin-top:10px}
-    .hidden{display:none!important}.owner-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    footer{text-align:center;color:#77819d;padding:24px;border-top:1px solid var(--line);font-size:13px}
-    @media(max-width:650px){main{padding:22px 15px 55px}.nav{padding:13px 15px}.hero{padding:25px 20px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.section-head{align-items:start;flex-direction:column}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b16">
+<meta name="description" content="Watch videos on Paras's Website.">
+<title>Paras's Website — Video Hub</title>
+<style>
+:root{color-scheme:dark;--bg:#090b16;--panel:#111629;--panel2:#171e35;--line:#28314d;--text:#f4f6ff;--muted:#aab3cc;--purple:#8b5cf6;--cyan:#22d3ee}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 15% -10%,#292052 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#090b16ef;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.nav{max-width:1120px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{font-weight:850;font-size:19px;letter-spacing:-.5px}.brand span{color:var(--cyan)}
+button{border:0;border-radius:11px;padding:10px 15px;background:linear-gradient(110deg,var(--purple),#5968ed);color:white;font-weight:750;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}.ghost{background:var(--panel2);border:1px solid var(--line)}
+main{max-width:1120px;margin:auto;padding:34px 22px 70px}
+.hero{padding:34px;border:1px solid #3b326c;border-radius:23px;background:linear-gradient(120deg,#201a43,#111a31 65%,#102b3c);margin-bottom:30px}
+.eyebrow{color:#9ceafa;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(32px,6vw,54px);line-height:1.05;letter-spacing:-2px;margin:9px 0 12px}
+.hero p{color:#c6cce0;max-width:610px;margin:0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:28px 0 16px}
+.section-head h2{margin:0;font-size:23px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}
+.video-card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.video-card video{width:100%;aspect-ratio:16/9;background:#05060b;display:block;object-fit:contain}
+.video-info{padding:14px}.video-info h3{margin:0 0 5px;font-size:17px;overflow-wrap:anywhere}
+.video-info p{margin:0;color:var(--muted);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.empty{grid-column:1/-1;text-align:center;padding:42px 18px;border:1px dashed #39415e;border-radius:17px;color:var(--muted)}
+.panel{padding:20px;margin-top:25px}.panel h2{margin:0 0 5px}.panel>p{margin:0 0 16px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+label{display:block;font-size:13px;font-weight:700;color:#dce2f5;margin-bottom:6px}
+input,textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #39415e;background:#090e1d;color:var(--text);font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:95px;resize:vertical}.field{margin-bottom:13px}.full{grid-column:1/-1}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.status{font-size:13px;color:var(--muted);min-height:20px;margin-top:10px}
+.hidden{display:none!important}
+.owner-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer{text-align:center;color:#77819d;padding:24px;border-top:1px solid var(--line);font-size:13px}
+@media(max-width:650px){
+main{padding:22px 15px 55px}.nav{padding:13px 15px}
+.hero{padding:25px 20px}.form-grid{grid-template-columns:1fr}
+.full{grid-column:auto}.section-head{align-items:start;flex-direction:column}
+}
+</style>
 </head>
 <body>
-<header><div class="nav"><div class="brand">PARAS<span>'S</span> WEBSITE</div><button class="ghost" id="ownerToggle">Owner login</button></div></header>
+<header>
+<div class="nav">
+<div class="brand">PARAS<span>'S</span> WEBSITE</div>
+<button class="ghost" id="ownerToggle">Owner login</button>
+</div>
+</header>
+
 <main>
-  <section class="hero">
-    <div class="eyebrow">YOUR VIDEO SPACE</div>
-    <h1>Watch. Explore.<br>Enjoy.</h1>
-    <p>Welcome to Paras's Website — a place to share and watch videos. New videos appear here after the owner uploads them.</p>
-  </section>
+<section class="hero">
+<div class="eyebrow">YOUR VIDEO SPACE</div>
+<h1>Watch. Explore.<br>Enjoy.</h1>
+<p>Welcome to Paras's Website — a place to share and watch videos. New videos appear here after the owner uploads them.</p>
+</section>
 
-  <div class="section-head"><div><div class="eyebrow">THE COLLECTION</div><h2>Latest videos</h2></div><span class="muted" id="videoCount">Loading videos…</span></div>
-  <section class="grid" id="videoGrid"><div class="empty">Connecting to the video library…</div></section>
+<div class="section-head">
+<div><div class="eyebrow">THE COLLECTION</div><h2>Latest videos</h2></div>
+<span class="muted" id="videoCount">Loading videos…</span>
+</div>
+<section class="grid" id="videoGrid">
+<div class="empty">Connecting to the video library…</div>
+</section>
 
-  <section class="panel hidden" id="loginPanel">
-    <h2>Owner login</h2><p>Only the authorised owner account can upload videos.</p>
-    <form id="loginForm">
-      <div class="form-grid">
-        <div class="field"><label for="email">Owner email</label><input id="email" type="email" autocomplete="username" required></div>
-        <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div>
-      </div>
-      <div class="actions"><button type="submit">Sign in</button><button class="ghost" type="button" id="closeLogin">Close</button></div>
-    </form>
-    <div class="status" id="loginStatus" role="status"></div>
-  </section>
+<section class="panel hidden" id="loginPanel">
+<h2>Owner login</h2>
+<p>Only the authorised owner account can upload videos.</p>
+<form id="loginForm">
+<div class="form-grid">
+<div class="field">
+<label for="email">Owner email</label>
+<input id="email" type="email" autocomplete="username" required>
+</div>
+<div class="field">
+<label for="password">Password</label>
+<input id="password" type="password" autocomplete="current-password" required>
+</div>
+</div>
+<div class="actions">
+<button type="submit">Sign in</button>
+<button class="ghost" type="button" id="closeLogin">Close</button>
+</div>
+</form>
+<div class="status" id="loginStatus" role="status"></div>
+</section>
 
-  <section class="panel hidden" id="uploadPanel">
-    <div class="owner-top"><div><h2>Owner studio</h2><p id="ownerEmail" class="muted"></p></div><button class="ghost" id="logoutBtn">Log out</button></div>
-    <form id="uploadForm">
-      <div class="form-grid">
-        <div class="field full"><label for="title">Video title (required)</label><input id="title" maxlength="100" required placeholder="Enter video title"></div>
-        <div class="field full"><label for="description">Description (required)</label><textarea id="description" maxlength="1000" required placeholder="Write a description"></textarea></div>
-        <div class="field full"><label for="videoFile">Choose video (required)</label><input id="videoFile" type="file" accept="video/mp4,video/webm,video/quicktime" required></div>
-      </div>
-      <div class="actions"><button id="uploadBtn" type="submit">Upload video</button></div>
-      <div class="status" id="uploadStatus" role="status"></div>
-    </form>
-  </section>
+<section class="panel hidden" id="uploadPanel">
+<div class="owner-top">
+<div><h2>Owner studio</h2><p id="ownerEmail" class="muted"></p></div>
+<button class="ghost" id="logoutBtn">Log out</button>
+</div>
+<form id="uploadForm">
+<div class="form-grid">
+<div class="field full">
+<label for="title">Video title (required)</label>
+<input id="title" maxlength="100" required placeholder="Enter video title">
+</div>
+<div class="field full">
+<label for="description">Description (required)</label>
+<textarea id="description" maxlength="1000" required placeholder="Write a description"></textarea>
+</div>
+<div class="field full">
+<label for="videoFile">Choose video (required)</label>
+<input id="videoFile" type="file" accept="video/*" required>
+</div>
+</div>
+<div class="actions">
+<button id="uploadBtn" type="submit">Upload video</button>
+</div>
+<div class="status" id="uploadStatus" role="status"></div>
+</form>
+</section>
 </main>
+
 <footer>© <span id="year"></span> Paras's Website</footer>
 
 <script type="module">
-  // 1) Create a Firebase project, enable Authentication > Email/Password,
-  //    create the owner's account, enable Firestore and Storage.
-  // 2) Replace the values below with your Firebase web-app configuration.
-  // 3) Put the owner's Firebase Auth UID in firestore.rules and storage.rules.
-  const firebaseConfig = {
-    apiKey: "AIzaSyAr9kJ8wk6l4Gyk30RpWdOrapdA-2Da6Nc",
-    authDomain: "paras-s-website.firebaseapp.com",
-    projectId: "paras-s-website",
-    storageBucket: "paras-s-website.firebaseapp.com",
-    appId: "1:952464884115:web:c20111612bc6b06caea866"
-  };
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  getDocs,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-  const configReady = !Object.values(firebaseConfig).some(v => String(v).includes("PASTE_") || String(v).includes("YOUR_PROJECT_ID"));
+// Your existing Firebase web configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAr9kJ8wk6l4Gyk30RpWdOrapdA-2Da6Nc",
+  authDomain: "paras-s-website.firebaseapp.com",
+  projectId: "paras-s-website",
+  appId: "1:952464884115:web:c20111612bc6b06caea866"
+};
 
-  const grid = document.querySelector("#videoGrid");
-  const count = document.querySelector("#videoCount");
-  const loginPanel = document.querySelector("#loginPanel");
-  const uploadPanel = document.querySelector("#uploadPanel");
-  const loginStatus = document.querySelector("#loginStatus");
-  const uploadStatus = document.querySelector("#uploadStatus");
-  document.querySelector("#year").textContent = new Date().getFullYear();
+// Cloudinary settings
+const CLOUDINARY_CLOUD_NAME = "il6gsk2v";
+const CLOUDINARY_UPLOAD_PRESET = "Paras-video-upload";
 
-  if (!configReady) {
-    grid.innerHTML = '<div class="empty">Firebase setup is not finished yet. Follow SETUP.md, add your Firebase config, then publish again.</div>';
-    count.textContent = "Setup required";
-  } else {
-    const [{ initializeApp }, authMod, dbMod, storageMod] = await Promise.all([
-      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"),
-      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"),
-      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"),
-      import("https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js")
-    ]);
-    const app = initializeApp(firebaseConfig);
-    const auth = authMod.getAuth(app);
-    const db = dbMod.getFirestore(app);
-    const storage = storageMod.getStorage(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-    async function loadVideos() {
-      try {
-        const q = dbMod.query(dbMod.collection(db, "videos"), dbMod.orderBy("createdAt", "desc"));
-        const snap = await dbMod.getDocs(q);
-        grid.replaceChildren();
-        count.textContent = `${snap.size} video${snap.size === 1 ? "" : "s"}`;
-        if (snap.empty) {
-          grid.innerHTML = '<div class="empty">No videos yet. Check back soon!</div>';
-          return;
-        }
-        snap.forEach(docSnap => {
-          const v = docSnap.data();
-          const card = document.createElement("article");
-          card.className = "video-card";
-          const player = document.createElement("video");
-          player.controls = true; player.preload = "metadata"; player.playsInline = true;
-          player.src = v.videoUrl;
-          const info = document.createElement("div"); info.className = "video-info";
-          const h = document.createElement("h3"); h.textContent = v.title || "Untitled video";
-          const p = document.createElement("p"); p.textContent = v.description || "";
-          info.append(h,p); card.append(player,info); grid.append(card);
-        });
-      } catch (err) {
-        grid.innerHTML = '<div class="empty">Could not load videos. Check Firestore setup and security rules.</div>';
-        count.textContent = "Unable to load";
-        console.error(err);
-      }
+const grid = document.querySelector("#videoGrid");
+const count = document.querySelector("#videoCount");
+const loginPanel = document.querySelector("#loginPanel");
+const uploadPanel = document.querySelector("#uploadPanel");
+const loginStatus = document.querySelector("#loginStatus");
+const uploadStatus = document.querySelector("#uploadStatus");
+const ownerToggle = document.querySelector("#ownerToggle");
+
+document.querySelector("#year").textContent = new Date().getFullYear();
+
+async function loadVideos() {
+  try {
+    const q = query(collection(db, "videos"), orderBy("createdAt", "desc"));
+    const snap = await getDocs(q);
+
+    grid.replaceChildren();
+    count.textContent = `${snap.size} video${snap.size === 1 ? "" : "s"}`;
+
+    if (snap.empty) {
+      grid.innerHTML = '<div class="empty">No videos yet. Check back soon!</div>';
+      return;
     }
 
-    document.querySelector("#ownerToggle").addEventListener("click", () => {
-      loginPanel.classList.toggle("hidden");
-      loginPanel.scrollIntoView({behavior:"smooth",block:"center"});
+    snap.forEach(docSnap => {
+      const v = docSnap.data();
+
+      const card = document.createElement("article");
+      card.className = "video-card";
+
+      const player = document.createElement("video");
+      player.controls = true;
+      player.preload = "metadata";
+      player.playsInline = true;
+      player.src = v.videoUrl || "";
+
+      const info = document.createElement("div");
+      info.className = "video-info";
+
+      const h = document.createElement("h3");
+      h.textContent = v.title || "Untitled video";
+
+      const p = document.createElement("p");
+      p.textContent = v.description || "";
+
+      info.append(h, p);
+      card.append(player, info);
+      grid.append(card);
     });
-    document.querySelector("#closeLogin").addEventListener("click", () => loginPanel.classList.add("hidden"));
-
-    authMod.onAuthStateChanged(auth, user => {
-      const signedIn = !!user;
-      loginPanel.classList.toggle("hidden", signedIn);
-      uploadPanel.classList.toggle("hidden", !signedIn);
-      document.querySelector("#ownerToggle").classList.toggle("hidden", signedIn);
-      if (user) document.querySelector("#ownerEmail").textContent = `Signed in as ${user.email}`;
-    });
-
-    document.querySelector("#loginForm").addEventListener("submit", async e => {
-      e.preventDefault(); loginStatus.textContent = "Signing in…";
-      try {
-        await authMod.signInWithEmailAndPassword(auth, document.querySelector("#email").value.trim(), document.querySelector("#password").value);
-        loginStatus.textContent = "Signed in.";
-      } catch (err) { loginStatus.textContent = "Login failed. Check the owner email and password."; }
-    });
-
-    document.querySelector("#logoutBtn").addEventListener("click", () => authMod.signOut(auth));
-
-    document.querySelector("#uploadForm").addEventListener("submit", async e => {
-      e.preventDefault();
-      const user = auth.currentUser;
-      if (!user) { uploadStatus.textContent = "Please sign in as the owner first."; return; }
-      const title = document.querySelector("#title").value.trim();
-      const description = document.querySelector("#description").value.trim();
-      const file = document.querySelector("#videoFile").files[0];
-      if (!title || !description || !file) { uploadStatus.textContent = "Title, description and video are all required."; return; }
-      if (!file.type.startsWith("video/")) { uploadStatus.textContent = "Please select a video file."; return; }
-      if (file.size > 500 * 1024 * 1024) { uploadStatus.textContent = "Maximum video size is 500 MB."; return; }
-      const btn = document.querySelector("#uploadBtn"); btn.disabled = true; uploadStatus.textContent = "Uploading video…";
-      try {
-        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-        const path = `videos/${user.uid}/${Date.now()}-${safeName}`;
-        const fileRef = storageMod.ref(storage, path);
-        await storageMod.uploadBytes(fileRef, file, {contentType:file.type});
-        const videoUrl = await storageMod.getDownloadURL(fileRef);
-        await dbMod.addDoc(dbMod.collection(db, "videos"), {
-          title, description, videoUrl, storagePath:path,
-          ownerUid:user.uid, createdAt:dbMod.serverTimestamp()
-        });
-        uploadStatus.textContent = "Video uploaded successfully!";
-        e.target.reset(); await loadVideos();
-      } catch (err) {
-        console.error(err); uploadStatus.textContent = "Upload failed. Check Firebase rules, Storage and network.";
-      } finally { btn.disabled = false; }
-    });
-
-    await loadVideos();
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = '<div class="empty">Could not load videos. Check Firestore setup and security rules.</div>';
+    count.textContent = "Unable to load";
   }
+}
+
+// Owner login panel
+ownerToggle.addEventListener("click", () => {
+  loginPanel.classList.remove("hidden");
+  loginPanel.scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+document.querySelector("#closeLogin").addEventListener("click", () => {
+  loginPanel.classList.add("hidden");
+});
+
+// Authentication state
+onAuthStateChanged(auth, user => {
+  if (user) {
+    loginPanel.classList.add("hidden");
+    uploadPanel.classList.remove("hidden");
+    ownerToggle.classList.add("hidden");
+    document.querySelector("#ownerEmail").textContent = `Signed in as ${user.email}`;
+  } else {
+    uploadPanel.classList.add("hidden");
+    ownerToggle.classList.remove("hidden");
+    loginPanel.classList.add("hidden");
+  }
+});
+
+// Login
+document.querySelector("#loginForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  loginStatus.textContent = "Signing in…";
+
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      document.querySelector("#email").value.trim(),
+      document.querySelector("#password").value
+    );
+    loginStatus.textContent = "Signed in successfully.";
+  } catch (err) {
+    console.error(err);
+    loginStatus.textContent = "Login failed. Check your owner email and password.";
+  }
+});
+
+// Logout
+document.querySelector("#logoutBtn").addEventListener("click", async () => {
+  await signOut(auth);
+});
+
+// Upload video to Cloudinary, then save its URL in Firestore
+document.querySelector("#uploadForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const user = auth.currentUser;
+  if (!user) {
+    uploadStatus.textContent = "Please sign in as the owner first.";
+    return;
+  }
+
+  const title = document.querySelector("#title").value.trim();
+  const description = document.querySelector("#description").value.trim();
+  const file = document.querySelector("#videoFile").files[0];
+
+  if (!title || !description || !file) {
+    uploadStatus.textContent = "Title, description and video are all required.";
+    return;
+  }
+
+  if (!file.type.startsWith("video/")) {
+    uploadStatus.textContent = "Please select a valid video file.";
+    return;
+  }
+
+  const btn = document.querySelector("#uploadBtn");
+  btn.disabled = true;
+
+  try {
+    uploadStatus.textContent = "Uploading video to Cloudinary…";
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/video/upload`,
+      {method:"POST", body:formData}
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error("Cloudinary error:", result);
+      throw new Error(result.error?.message || "Cloudinary upload failed.");
+    }
+
+    if (!result.secure_url || !result.public_id) {
+      throw new Error("Cloudinary did not return a valid video URL.");
+    }
+
+    uploadStatus.textContent = "Video uploaded. Saving details…";
+
+    await addDoc(collection(db, "videos"), {
+      title,
+      description,
+      videoUrl: result.secure_url,
+      publicId: result.public_id,
+      ownerUid: user.uid,
+      createdAt: serverTimestamp()
+    });
+
+    uploadStatus.textContent = "Video published successfully!";
+    e.target.reset();
+    await loadVideos();
+
+  } catch (err) {
+    console.error(err);
+    uploadStatus.textContent = `Upload failed: ${err.message}`;
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+await loadVideos();
 </script>
 </body>
-</html>
+  </html>
+  
